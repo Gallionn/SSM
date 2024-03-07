@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" th:src="@{../../static/js/jquery-1.8.2.min.js}"></script>
+    <link rel="stylesheet" th:href="@{../../static/css/animate.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/flat-ui.min.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/main.css}">
+    <title>授课记录</title>
+</head>
+<body class="main" style="margin: 0; background-color: rgb(70, 130, 180);">
+<nav class="navbar navbar-inverse navbar-expand-lg">
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav mr-auto">
+            <li><a th:href="@{/select/s_info_all/1}"><strong>学生管理</strong></a></li>
+            <li><a th:href="@{/select/t_info_all/1}"><strong>教师管理</strong></a></li>
+            <li><a th:href="@{/select/c_info/1}"><strong>课程管理</strong></a></li>
+            <li><a th:href="@{/select/sc_info_all/1}"><strong>选课记录</strong></a></li>
+            <li><a th:href="@{/select/s_application/1}"><strong>选课处理</strong></a></li>
+            <li><a th:href="@{/select/tc_info/1}"><strong>授课记录</strong></a></li>
+            <li><a th:href="@{/select/t_application/1}"><strong>授课处理</strong></a></li>
+            <li><a th:href="@{/to/insert/s_info_add}"><strong>添加学生</strong></a></li>
+            <li><a th:href="@{/to/insert/t_info_add}"><strong>添加教师</strong></a></li>
+            <li><a th:href="@{/to/insert/c_info_add}"><strong>添加课程</strong></a></li>
+        </ul>
+        <p class="navbar-text navbar-right">
+            <span th:text="${uId}"></span>
+            <a class="navbar-link" th:href="@{/return}">首页</a>
+            <a class="navbar-link" th:href="@{/to/update/user_update}">修改</a>
+            <a class="navbar-link" th:href="@{/logout}">注销</a>
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <div class="row" style="margin-top: -25px">
+        <div class="col-md-12">
+            <h5>授课记录</h5>
+            <form method="get" th:action="@{/select/tc_info_all/1}">
+                <div class="row">
+                    <strong>查询条件<br></strong>
+                    <p>
+                        <input type="text" name="cId"  placeholder="选课号">
+                        <input type="text" name="cNo"  placeholder="课程号">
+                        <input type="text" name="tNo" placeholder="教师工号">
+                        <input type="text" name="TcStatus" placeholder="状态">
+                        <input type="text" name="Time" placeholder="时间">
+                        <input type="submit" class="btn bg-primary" th:value="查询">
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="margin:0 15px">
+                        <table class="table table-striped table-hover animated fadeIn">
+                            <thead>
+                            <tr>
+                                <th>选课号</th>
+                                <th>课号</th>
+                                <th>教师工号</th>
+                                <th>时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="tc: ${page.list}">
+                                <td style="font-size: 16px;Vertical-align:middle" th:text="${tc.cId}"></td>
+                                <td style="font-size: 16px;Vertical-align:middle" th:text="${tc.cNo}"></td>
+                                <td style="font-size: 16px;Vertical-align:middle" th:text="${tc.tNo}"></td>
+                                <td style="font-size: 16px;Vertical-align:middle" th:text="${tc.Time}"></td>
+                                <td style="font-size: 16px;Vertical-align:middle" th:text="${tc.TcStatus}"></td>
+                                <td>
+                                    <form th:action="@{/delete/tc_info}" style="display: inline-block"
+                                          method="post">
+                                        <input type="hidden" name="cId" th:value="${tc.cId}">
+                                        <input type="hidden" name="tNo" th:value="${tc.tNo}">
+                                        <input type="submit" class="deleteCss btn btn-default" style="font-size: 16px"
+                                               value="撤回">
+                                    </form>
+                                    <!--                                    <a class="btn btn-default" th:href="@{}">修改</a>-->
+                                    <!--                                    <a class="deleteCss btn btn-default">删除</a>-->
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6" style="float: none;display: block;margin: 0 auto;text-align: center;">
+            <nav aria-label="Page navigation">
+                <ul class="pagination bg-primary">
+                    <li>
+                        <a th:if="${page.hasPreviousPage}" th:href="@{/select/tc_info/1}">首页</a>
+                    </li>
+                    <li>
+                        <a th:if="${page.hasPreviousPage}" th:href="@{'/select/tc_info/'+${page.prePage}}">上一页</a>
+                    </li>
+                    <li th:each="num : ${page.navigatepageNums}">
+                        <a th:if="${page.pageNum == num}" class="active" th:href="@{'/select/tc_info/'+${num}}" th:text="'['+${num}+']'"></a>
+                        <a th:if="${page.pageNum != num}" th:href="@{'/select/tc_info/'+${num}}" th:text="${num}"></a>
+                    </li>
+                    <li>
+                        <a th:if="${page.hasNextPage}" th:href="@{'/select/tc_info/'+${page.nextPage}}">下一页</a>
+                    </li>
+                    <li>
+                        <a th:if="${page.hasNextPage}" th:href="@{'/select/tc_info/'+${page.pages}}">末页</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>

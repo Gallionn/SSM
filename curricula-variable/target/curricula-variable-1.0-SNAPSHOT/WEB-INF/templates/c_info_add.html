@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" th:src="@{../../static/js/jquery-1.8.2.min.js}"></script>
+    <link rel="stylesheet" th:href="@{../../static/css/animate.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/flat-ui.min.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/main.css}">
+    <title>添加课程信息</title>
+</head>
+<body class="main" style="margin: 0; background-color: rgb(70, 130, 180);">
+<nav class="navbar navbar-inverse navbar-expand-lg">
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav mr-auto">
+            <li><a th:href="@{/select/s_info_all/1}"><strong>学生管理</strong></a></li>
+            <li><a th:href="@{/select/t_info_all/1}"><strong>教师管理</strong></a></li>
+            <li><a th:href="@{/select/c_info/1}"><strong>课程管理</strong></a></li>
+            <li><a th:href="@{/select/sc_info_all/1}"><strong>选课记录</strong></a></li>
+            <li><a th:href="@{/select/s_application/1}"><strong>选课处理</strong></a></li>
+            <li><a th:href="@{/select/tc_info/1}"><strong>授课记录</strong></a></li>
+            <li><a th:href="@{/select/t_application/1}"><strong>授课处理</strong></a></li>
+            <li><a th:href="@{/to/insert/s_info_add}"><strong>添加学生</strong></a></li>
+            <li><a th:href="@{/to/insert/t_info_add}"><strong>添加教师</strong></a></li>
+            <li><a th:href="@{/to/insert/c_info_add}"><strong>添加课程</strong></a></li>
+        </ul>
+        <p class="navbar-text navbar-right">
+            <a class="navbar-link" th:href="@{/return}">首页</a>
+            <a class="navbar-link" th:href="@{/to/update/user_update}">修改</a>
+            <a class="navbar-link" th:href="@{/logout}">注销</a>
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div style="float: left">
+                        <a class="btn btn-default btn-info" th:href="@{/select/t_info_all/1}">返回</a>
+                    </div>
+                    <div class="row">
+                        <h1 style="text-align: center;">添加课程信息</h1>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" th:action="@{/insert/c_info_add}" th:method="post">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">课号</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="cNo" placeholder="请输入课号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">课程名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="cName" placeholder="请输入课程名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">先修课号</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="cPno" placeholder="请输入先修课号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">学分</label>
+                            <div class="col-sm-10">
+                                <input type="number" step="0.01" class="form-control" name="cCredit" placeholder="请输入学分">
+                            </div>
+                        </div>
+                        <div class="form-group" style="text-align: center">
+                            <button type="submit" class="btn btn-default btn-info">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" th:src="@{../../static/js/jquery-1.8.2.min.js}"></script>
+    <link rel="stylesheet" th:href="@{../../static/css/animate.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/flat-ui.min.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/main.css}">
+    <title>申请开课</title>
+</head>
+<body class="main" style="margin: 0; background-color: rgb(70, 130, 180);">
+<nav class="navbar navbar-inverse navbar-expand-lg">
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav mr-auto">
+            <li><a th:href="@{/select/t_info}"><strong>教师信息</strong></a></li>
+            <li><a th:href="@{/select/c_info/1}"><strong>开课一览</strong></a></li>
+            <li><a th:href="@{/select/t_mycourse/1}"><strong>课程管理</strong></a></li>
+            <li><a th:href="@{/to/insert/t_mycourse_add}"><strong>申请开课</strong></a></li>
+
+        </ul>
+        <p class="navbar-text navbar-right">
+            <a class="navbar-link" th:href="@{/return}">首页</a>
+            <a class="navbar-link" th:href="@{/to/update/user_update}">修改</a>
+            <a class="navbar-link" th:href="@{/logout}">注销</a>
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    <div class="row">
+                        <h1 style="text-align: center;">添加开课信息</h1>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" th:action="@{/insert/t_mycourse_add}" th:method="post">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">选课号</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="cId" placeholder="请输入选课号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">课程号</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="cNo" placeholder="请输入课程号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">教师职工号</label>
+                            <div class="col-sm-10">
+                                <input type="number" readOnly="true" class="form-control" name="tNo" placeholder="请输入教师职工号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">上课时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="time" placeholder="请输入上课时间">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">处理进度</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="tc_status" value="未处理" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group" style="text-align: center">
+                            <button type="submit" class="btn btn-default btn-info">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

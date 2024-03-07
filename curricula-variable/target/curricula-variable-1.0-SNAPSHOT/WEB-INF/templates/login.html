@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{static/css/login.css}">
+    <script type="text/javascript" th:src="@{static/js/jquery-1.8.2.min.js}"></script>
+    <title>教务系统</title>
+</head>
+<body>
+<div class="container">
+    <h1>登录</h1>
+    <form th:action="@{/index}" method="get">
+        <div class="form-control">
+            <input type="text" name="uId" required>
+            <label>
+                账号
+            </label>
+        </div>
+        <div class="form-control">
+            <input type="password" name="uPassword" required>
+            <label>密码</label>
+        </div>
+        <button class="btn">登录</button>
+    </form>
+</div>
+<script th:src="@{static/js/login.js}"></script>
+</body>
+</html>

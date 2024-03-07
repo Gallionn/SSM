@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" th:src="@{../static/js/jquery-1.8.2.min.js}"></script>
+    <link rel="stylesheet" th:href="@{../static/css/animate.css}">
+    <link rel="stylesheet" th:href="@{../static/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{../static/css/flat-ui.min.css}">
+    <link rel="stylesheet" th:href="@{../static/css/main.css}">
+    <title>教师管理</title>
+</head>
+<body class="main" style="margin: 0; background-color: rgb(70, 130, 180);">
+<nav class="navbar navbar-inverse navbar-expand-lg">
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav mr-auto">
+            <li><a th:href="@{/select/t_info}"><strong>教师信息</strong></a></li>
+            <li><a th:href="@{/select/c_info/1}"><strong>开课一览</strong></a></li>
+            <li><a th:href="@{/select/t_mycourse/1}"><strong>课程管理</strong></a></li>
+            <li><a th:href="@{/to/insert/t_mycourse_add}"><strong>申请开课</strong></a></li>
+
+        </ul>
+        <p class="navbar-text navbar-right">
+            <a class="navbar-link" th:href="@{/return}">首页</a>
+            <a class="navbar-link" th:href="@{/to/update/user_update}">修改</a>
+            <a class="navbar-link" th:href="@{/logout}">注销</a>
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <div class="row" style="margin-top: -25px">
+        <div class="col-md-12">
+            <h5>个人信息</h5>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="margin:0 15px">
+                        <table class="table table-striped table-hover animated fadeIn">
+                            <thead>
+                            <tr>
+                                <th>工号</th>
+                                <th>姓名</th>
+                                <th>性别</th>
+                                <th>年龄</th>
+                                <th>电话</th>
+                                <th>院系</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td style="font-size: 16px;Vertical-align:middle" th:text="${teacher.tNo}"></td>
+                                <td style="font-size: 16px;Vertical-align:middle" th:text="${teacher.tName}"></td>
+                                <td style="font-size: 16px;Vertical-align:middle" th:text="${teacher.tSex}"></td>
+                                <td style="font-size: 16px;Vertical-align:middle" th:text="${teacher.tAge}"></td>
+                                <td style="font-size: 16px;Vertical-align:middle" th:text="${teacher.tTel}"></td>
+                                <td style="font-size: 16px;Vertical-align:middle" th:text="${teacher.tDept}"></td>
+                                <td>
+                                    <form th:action="@{/to/update/t_info_update}" style="display: inline-block"
+                                          method="get">
+                                        <input type="hidden" name="tNo" th:value="${teacher.tNo}">
+                                        <input type="submit" class="deleteCss btn btn-default" style="font-size: 16px"
+                                               value="修改">
+                                    </form>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

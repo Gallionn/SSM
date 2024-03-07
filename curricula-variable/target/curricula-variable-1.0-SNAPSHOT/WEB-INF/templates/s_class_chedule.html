@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" th:src="@{../static/js/jquery-1.8.2.min.js}"></script>
+    <link rel="stylesheet" th:href="@{../static/css/animate.css}">
+    <link rel="stylesheet" th:href="@{../static/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{../static/css/flat-ui.min.css}">
+    <link rel="stylesheet" th:href="@{../static/css/main.css}">
+    <title>我的课表</title>
+</head>
+<body class="main" style="margin: 0; background-color: rgb(70, 130, 180);">
+<nav class="navbar navbar-inverse navbar-expand-lg">
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav mr-auto">
+            <li><a th:href="@{/select/s_info}"><strong>学生信息</strong></a></li>
+            <li><a th:href="@{/select/c_info/1}"><strong>选课一览</strong></a></li>
+            <li><a th:href="@{/select/s_mycourse/1}"><strong>选课管理</strong></a></li>
+            <li><a th:href="@{/select/s_class_chedule}"><strong>上课日历</strong></a></li>
+            <li><a th:href="@{/to/insert/s_mycourse_add}"><strong>选课</strong></a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row" style="margin-top: -25px">
+        <div class="col-md-12">
+            <h5>课程管理</h5>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-striped table-hover animated fadeIn">
+                <thead>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">节次/周次</td>
+                    <td style="font-size: 16px;Vertical-align:middle">星期一</td>
+                    <td style="font-size: 16px;Vertical-align:middle">星期二</td>
+                    <td style="font-size: 16px;Vertical-align:middle">星期三</td>
+                    <td style="font-size: 16px;Vertical-align:middle">星期四</td>
+                    <td style="font-size: 16px;Vertical-align:middle">星期五</td>
+                    <td style="font-size: 16px;Vertical-align:middle">星期六</td>
+                    <td style="font-size: 16px;Vertical-align:middle">星期天</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">1<br>08:00~08:50</td>
+                    <td th:text="${myschedule[0]} ne '-1'?${list[myschedule[0]].cName}:'  '"></td>
+                    <td th:text="${myschedule[12]} ne '-1'?${list[myschedule[12]].cName}:'  '"></td>
+                    <td th:text="${myschedule[24]} ne '-1'?${list[myschedule[24]].cName}:'  '"></td>
+                    <td th:text="${myschedule[36]} ne '-1'?${list[myschedule[36]].cName}:'  '"></td>
+                    <td th:text="${myschedule[48]} ne '-1'?${list[myschedule[48]].cName}:'  '"></td>
+                    <td th:text="${myschedule[60]} ne '-1'?${list[myschedule[60]].cName}:'  '"></td>
+                    <td th:text="${myschedule[72]} ne '-1'?${list[myschedule[72]].cName}:'  '"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">2<br>09:00~09:50</td>
+                    <td th:text="${myschedule[1]} ne '-1'?${list[myschedule[1]].cName}:'  '"></td>
+                    <td th:text="${myschedule[13]} ne '-1'?${list[myschedule[13]].cName}:'  '"></td>
+                    <td th:text="${myschedule[25]} ne '-1'?${list[myschedule[25]].cName}:'  '"></td>
+                    <td th:text="${myschedule[37]} ne '-1'?${list[myschedule[37]].cName}:'  '"></td>
+                    <td th:text="${myschedule[49]} ne '-1'?${list[myschedule[49]].cName}:'  '"></td>
+                    <td th:text="${myschedule[61]} ne '-1'?${list[myschedule[61]].cName}:'  '"></td>
+                    <td th:text="${myschedule[73]} ne '-1'?${list[myschedule[73]].cName}:'  '"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">3<br>10:10~11:00</td>
+                    <td th:text="${myschedule[2]} ne '-1'?${list[myschedule[2]].cName}:'  '"></td>
+                    <td th:text="${myschedule[14]} ne '-1'?${list[myschedule[14]].cName}:'  '"></td>
+                    <td th:text="${myschedule[26]} ne '-1'?${list[myschedule[26]].cName}:'  '"></td>
+                    <td th:text="${myschedule[38]} ne '-1'?${list[myschedule[38]].cName}:'  '"></td>
+                    <td th:text="${myschedule[50]} ne '-1'?${list[myschedule[50]].cName}:'  '"></td>
+                    <td th:text="${myschedule[62]} ne '-1'?${list[myschedule[62]].cName}:'  '"></td>
+                    <td th:text="${myschedule[74]} ne '-1'?${list[myschedule[74]].cName}:'  '"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">4<br>11:10~12:00</td>
+                    <td th:text="${myschedule[3]} ne '-1'?${list[myschedule[3]].cName}:'  '"></td>
+                    <td th:text="${myschedule[15]} ne '-1'?${list[myschedule[15]].cName}:'  '"></td>
+                    <td th:text="${myschedule[27]} ne '-1'?${list[myschedule[27]].cName}:'  '"></td>
+                    <td th:text="${myschedule[39]} ne '-1'?${list[myschedule[39]].cName}:'  '"></td>
+                    <td th:text="${myschedule[51]} ne '-1'?${list[myschedule[51]].cName}:'  '"></td>
+                    <td th:text="${myschedule[63]} ne '-1'?${list[myschedule[63]].cName}:'  '"></td>
+                    <td th:text="${myschedule[75]} ne '-1'?${list[myschedule[75]].cName}:'  '"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">5<br>13:30~14:20</td>
+                    <td th:text="${myschedule[4]} ne '-1'?${list[myschedule[4]].cName}:'  '"></td>
+                    <td th:text="${myschedule[16]} ne '-1'?${list[myschedule[16]].cName}:'  '"></td>
+                    <td th:text="${myschedule[28]} ne '-1'?${list[myschedule[28]].cName}:'  '"></td>
+                    <td th:text="${myschedule[40]} ne '-1'?${list[myschedule[40]].cName}:'  '"></td>
+                    <td th:text="${myschedule[52]} ne '-1'?${list[myschedule[52]].cName}:'  '"></td>
+                    <td th:text="${myschedule[64]} ne '-1'?${list[myschedule[64]].cName}:'  '"></td>
+                    <td th:text="${myschedule[76]} ne '-1'?${list[myschedule[76]].cName}:'  '"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">6<br>14:30~15:20</td>
+                    <td th:text="${myschedule[5]} ne '-1'?${list[myschedule[5]].cName}:'  '"></td>
+                    <td th:text="${myschedule[17]} ne '-1'?${list[myschedule[17]].cName}:'  '"></td>
+                    <td th:text="${myschedule[29]} ne '-1'?${list[myschedule[29]].cName}:'  '"></td>
+                    <td th:text="${myschedule[41]} ne '-1'?${list[myschedule[41]].cName}:'  '"></td>
+                    <td th:text="${myschedule[53]} ne '-1'?${list[myschedule[53]].cName}:'  '"></td>
+                    <td th:text="${myschedule[65]} ne '-1'?${list[myschedule[65]].cName}:'  '"></td>
+                    <td th:text="${myschedule[77]} ne '-1'?${list[myschedule[77]].cName}:'  '"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">7<br>15:30~16:20</td>
+                    <td th:text="${myschedule[6]} ne '-1'?${list[myschedule[6]].cName}:'  '"></td>
+                    <td th:text="${myschedule[18]} ne '-1'?${list[myschedule[18]].cName}:'  '"></td>
+                    <td th:text="${myschedule[30]} ne '-1'?${list[myschedule[30]].cName}:'  '"></td>
+                    <td th:text="${myschedule[42]} ne '-1'?${list[myschedule[42]].cName}:'  '"></td>
+                    <td th:text="${myschedule[54]} ne '-1'?${list[myschedule[54]].cName}:'  '"></td>
+                    <td th:text="${myschedule[66]} ne '-1'?${list[myschedule[66]].cName}:'  '"></td>
+                    <td th:text="${myschedule[78]} ne '-1'?${list[myschedule[78]].cName}:'  '"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">8<br>16:30~17:20</td>
+                    <td th:text="${myschedule[7]} ne '-1'?${list[myschedule[7]].cName}:'  '"></td>
+                    <td th:text="${myschedule[19]} ne '-1'?${list[myschedule[19]].cName}:'  '"></td>
+                    <td th:text="${myschedule[31]} ne '-1'?${list[myschedule[31]].cName}:'  '"></td>
+                    <td th:text="${myschedule[43]} ne '-1'?${list[myschedule[43]].cName}:'  '"></td>
+                    <td th:text="${myschedule[55]} ne '-1'?${list[myschedule[55]].cName}:'  '"></td>
+                    <td th:text="${myschedule[67]} ne '-1'?${list[myschedule[67]].cName}:'  '"></td>
+                    <td th:text="${myschedule[79]} ne '-1'?${list[myschedule[79]].cName}:'  '"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">9<br>17:30~18:20</td>
+                    <td th:text="${myschedule[8]} ne '-1'?${list[myschedule[8]].cName}:'  '"></td>
+                    <td th:text="${myschedule[20]} ne '-1'?${list[myschedule[20]].cName}:'  '"></td>
+                    <td th:text="${myschedule[32]} ne '-1'?${list[myschedule[32]].cName}:'  '"></td>
+                    <td th:text="${myschedule[44]} ne '-1'?${list[myschedule[44]].cName}:'  '"></td>
+                    <td th:text="${myschedule[56]} ne '-1'?${list[myschedule[56]].cName}:'  '"></td>
+                    <td th:text="${myschedule[68]} ne '-1'?${list[myschedule[68]].cName}:'  '"></td>
+                    <td th:text="${myschedule[80]} ne '-1'?${list[myschedule[80]].cName}:'  '"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">10<br>18:30~19:20</td>
+                    <td th:text="${myschedule[9]} ne '-1'?${list[myschedule[9]].cName}:'  '"></td>
+                    <td th:text="${myschedule[21]} ne '-1'?${list[myschedule[21]].cName}:'  '"></td>
+                    <td th:text="${myschedule[33]} ne '-1'?${list[myschedule[33]].cName}:'  '"></td>
+                    <td th:text="${myschedule[45]} ne '-1'?${list[myschedule[45]].cName}:'  '"></td>
+                    <td th:text="${myschedule[57]} ne '-1'?${list[myschedule[57]].cName}:'  '"></td>
+                    <td th:text="${myschedule[69]} ne '-1'?${list[myschedule[69]].cName}:'  '"></td>
+                    <td th:text="${myschedule[81]} ne '-1'?${list[myschedule[81]].cName}:'  '"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">11<br>19:30~20:20</td>
+                    <td th:text="${myschedule[10]} ne '-1'?${list[myschedule[10]].cName}:'  '"></td>
+                    <td th:text="${myschedule[22]} ne '-1'?${list[myschedule[22]].cName}:'  '"></td>
+                    <td th:text="${myschedule[34]} ne '-1'?${list[myschedule[34]].cName}:'  '"></td>
+                    <td th:text="${myschedule[46]} ne '-1'?${list[myschedule[46]].cName}:'  '"></td>
+                    <td th:text="${myschedule[58]} ne '-1'?${list[myschedule[58]].cName}:'  '"></td>
+                    <td th:text="${myschedule[70]} ne '-1'?${list[myschedule[70]].cName}:'  '"></td>
+                    <td th:text="${myschedule[82]} ne '-1'?${list[myschedule[82]].cName}:'  '"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 16px;Vertical-align:middle">12<br>20:30~21:20</td>
+                    <td th:text="${myschedule[11]} ne '-1'?${list[myschedule[11]].cName}:'  '"></td>
+                    <td th:text="${myschedule[23]} ne '-1'?${list[myschedule[23]].cName}:'  '"></td>
+                    <td th:text="${myschedule[35]} ne '-1'?${list[myschedule[35]].cName}:'  '"></td>
+                    <td th:text="${myschedule[47]} ne '-1'?${list[myschedule[47]].cName}:'  '"></td>
+                    <td th:text="${myschedule[59]} ne '-1'?${list[myschedule[59]].cName}:'  '"></td>
+                    <td th:text="${myschedule[71]} ne '-1'?${list[myschedule[71]].cName}:'  '"></td>
+                    <td th:text="${myschedule[83]} ne '-1'?${list[myschedule[83]].cName}:'  '"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

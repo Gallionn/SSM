@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" th:src="@{../../static/js/jquery-1.8.2.min.js}"></script>
+    <link rel="stylesheet" th:href="@{../../static/css/animate.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/flat-ui.min.css}">
+    <link rel="stylesheet" th:href="@{../../static/css/main.css}">
+    <title>选课信息修改</title>
+</head>
+<body style="margin: 0; background-color: rgb(70, 130, 180);">
+<div class="container">
+    <div class="row">
+        <div class="col-md-10" style="float: none;display: block;margin: 0 auto;text-align: center;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div style="float: left">
+                        <a class="btn btn-default btn-info" th:href="@{/select/sc_info_all/1}">返回</a>
+                    </div>
+                    <div class="row">
+                        <h1 style="text-align: center">修改选课信息</h1>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" th:action="@{/update/sc_info_update}" id="from1"
+                          method="post">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">学号</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="sNo" placeholder="请输入学号" th:value="${sc.sNo}" readonly="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">课号</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="cId" placeholder="请输入课号" th:value="${sc.cId}" readonly="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size: 16px; font-weight: bolder">成绩</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="grade" placeholder="请输入成绩" th:value="${sc.grade}">
+                            </div>
+                        </div>
+                        <div class="form-group" style="text-align: center">
+                            <button type="submit" class="btn btn-default btn-info">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
